@@ -5,11 +5,11 @@ FSJS Project 2 - Data Pagination and Filtering
 
 //This code will show a structured list of students with pagination buttons 
 
-//This function will display a list of students
-
 const studentList = document.querySelector(".student-list");
 const paginationList = document.querySelector(".link-list");
 const studentsPerPage = 9;
+
+//This function will display a list of students
 
 function showPage (array, page){
    const firstStudentOfPage = page * studentsPerPage - studentsPerPage;
