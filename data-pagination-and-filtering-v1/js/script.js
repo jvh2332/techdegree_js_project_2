@@ -44,7 +44,7 @@ function addPagination (array){
 
    for (let i = 1; i <= numberOfButtons; i++){ //starting with i = 1 since we do not want a pagination button with number 0
       const html = `
-      li>
+      <li>
       <button type="button">${i}</button>
       </li>
       `;
@@ -55,19 +55,14 @@ function addPagination (array){
 }
 
 paginationList.addEventListener ("click", (e) => {
-   
+   const clickedButton = e.target.closest("button");
+   const activeButton = paginationList.querySelector(".active");
+   if(clickedButton){
+      activeButton.classList.remove("active");
+      clickedButton.classList.add("active");
+      showPage(array, buttonClicked.innerHTML);
+   }
 });
-
-/*
-Create an event listener to listen for clicks on the .link-list element.
-
-Inside this event listener:
-
-Create a conditional that checks if the clicked element is a <button>. This will ensure that the function will only be called if one of the buttons is clicked. If the conditional evaluates to be true:
-Remove the active class from any other pagination button.
-Add the active class to the button that was just clicked.
-Call the showPage function and pass it the list and page number to display.
-*/
 
 
 // Call functions
