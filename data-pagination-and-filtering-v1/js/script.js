@@ -12,33 +12,33 @@ For assistance:
 /*
 This function will create and insert/append the elements needed to display a "page" of nine students
 */
+const studentList = document.querySelector(".student_list");
 const studentsPerPage = 9;
 
 function showPage (array, page){
-   const firstStudendOfPage = (page * studentsPerPage) - studentsPerPage;
-   const lastStudentOfPage = (page * studentsPerPage) - 1;
-   const studentList = document.querySelector(.student_list);
-   studentList.innterHTML = "";
-   for (i=0, i < array.length, i++){
-      if (i >= firstStudendOfPage && i <= lastStudentOfPage) {
+   const firstStudentOfPage = page * studentsPerPage - studentsPerPage;
+   const lastStudentOfPage = page * studentsPerPage - 1;
+   studentList.innerHTML = "";
+   
+   for (let i=0; i < array.length; i++){
+      if (i >= firstStudentOfPage && i <= lastStudentOfPage) {
          const student = array[i];
          const html = `
          <li class="student-item cf">
          <div class="student-details">
-           <img class="avatar" src="${student.picture}" alt="Profile Picture">
-           <h3>${student.name}</h3>
+           <img class="avatar" src="${student.picture.large}" alt="Profile Picture">
+           <h3>${student.name.first} ${student.name.last}</h3>
            <span class="email">${student.email}</span>
          </div>
          <div class="joined-details">
-           <span class="date">${student.registered}</span>
+           <span class="date">Joined ${student.registered.date}</span>
          </div>
        </li>
-         `
-        studentList.insertAdjacentHTML(beforeend, "html");
+         `;
+        studentList.insertAdjacentHTML("beforeend", html);
       }
    }
 }
-
 
 /*
 Create the `addPagination` function
@@ -48,3 +48,4 @@ This function will create and insert/append the elements needed for the paginati
 
 
 // Call functions
+showPage (data, 1);
