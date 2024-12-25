@@ -5,7 +5,7 @@ FSJS Project 2 - Data Pagination and Filtering
 
 //This code will show a structured list of students with pagination buttons 
 
-//This function creates and appends the elements needed to display a "page" of nine students
+//This function will display a list of students
 
 const studentList = document.querySelector(".student-list");
 const paginationList = document.querySelector(".link-list");
@@ -36,7 +36,7 @@ function showPage (array, page){
    }
 }
 
-//This function will be responsible for rendering the pagination buttons to the page and dynamically showing the right list of students for each page
+//This function will render the pagination buttons
 
 function addPagination (array){
    const numberOfButtons = Math.ceil(array.length/studentsPerPage);
@@ -51,6 +51,8 @@ function addPagination (array){
       paginationList.insertAdjacentHTML ("beforeend", html);
       paginationList.querySelector("button").classList.add("active");
    }
+
+//Adding event listner for button click
 
    paginationList.addEventListener ("click", (e) => {
       const clickedButton = e.target.closest("button");
