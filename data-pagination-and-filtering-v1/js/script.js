@@ -36,7 +36,7 @@ function showPage (array, page){
    }
 }
 
-//This function will be responsible for rendering the pagination buttons to the page
+//This function will be responsible for rendering the pagination buttons to the page and dynamically showing the right list of students for each page
 
 function addPagination (array){
    const numberOfButtons = Math.ceil(array.length/studentsPerPage);
@@ -51,18 +51,17 @@ function addPagination (array){
       paginationList.insertAdjacentHTML ("beforeend", html);
       paginationList.querySelector("button").classList.add("active");
    }
-   
-}
 
-paginationList.addEventListener ("click", (e) => {
-   const clickedButton = e.target.closest("button");
-   const activeButton = paginationList.querySelector(".active");
-   if(clickedButton){
-      activeButton.classList.remove("active");
-      clickedButton.classList.add("active");
-      showPage(array, buttonClicked.innerHTML);
-   }
-});
+   paginationList.addEventListener ("click", (e) => {
+      const clickedButton = e.target.closest("button");
+      const activeButton = paginationList.querySelector(".active");
+      if(clickedButton){
+         activeButton.classList.remove("active");
+         clickedButton.classList.add("active");
+         showPage(array, clickedButton.innerHTML);
+      }
+   });
+}
 
 
 // Call functions
